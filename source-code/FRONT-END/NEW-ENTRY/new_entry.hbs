@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+    <style>
+        /* Styling for centering and layout */
+        .form-container {
+            display: flex;
+            justify-content: center; /* Centers the form horizontally */
+            align-items: center; /* Centers the form vertically if necessary */
+            width: 100%;
+            margin: 0 auto; /* Centers the form horizontally */
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 65%; /* Doubled the width */
+            margin: auto;
+        }
+
+        .column {
+            flex: 2; /* Doubled the flex to make the columns wider */
+            padding: 20px;
+        }
+
+        .column input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000; /* Thick, visible border */
+            box-sizing: border-box; /* Ensure padding doesn't increase the width */
+        }
+            .nav-list-item {
+            list-style: none;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            text-decoration: none; /* Remove underline from the link */
+            gap: 10px; /* Add spacing between icon and text */
+        }
+
+        .nav-icon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .nav-text {
+            font-size: 16px; /* Adjust the text size as needed */
+            color: inherit; /* Match text color with the parent link */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation links -->
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">Supplier Info</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/Dashboard" class="nav-link">
+                 <img src="/home.png" alt="Home Icon" class="nav-icon" style="height: 30px; width: 30px;  ">
+                Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">
+                <img src="/logout.png" alt="Home Icon" class="nav-icon" style="height: 35px; width: 30px;  ">
+                Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <p>
+        <a href="http://localhost:8000/Dashboard"><img src="/back.png" style="height: 60px; width: 60px; margin: 20px "></a>
+    </p>
+
+    <!-- Dashboard -->
+    <h1 style="text-align: center;">NEW ENTRY</h1>
+    <br><br>
+
+    <div class="form-container">
+
+        {{#if message }}
+                <h4 style="color: #09ccb2;" class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+        <form id="new-entry-form" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="column">
+                    <label for="companyName"><b>Company Name</b></label>
+                    <input type="text" placeholder="Name of the company" name="companyName" >
+                    <br><br>
+                    <label for="cellphone"><b>Cellphone</b></label>
+                    <input type="text" placeholder="contact person's cellphone" name="cellphone" >
+                    <br><br>
+                    <label for="postalAddress"><b>Postal Address</b></label>
+                    <input type="text" placeholder="Enter Postal Address" name="postalAddress" >
+                    <br><br>
+                    <label for="profile"><b>Profile document</b></label>
+                    <input style="border: none;" type="file" name="profileDocument" >
+                </div>
+                <div class="column">
+                    <label for="telephone"><b>Telephone</b></label>
+                    <input type="text" placeholder="Name of the company" name="telephone" >
+                    <br><br>
+                    <label for="fax_number"><b>Fax</b></label>
+                    <input type="text" placeholder="Fax Number" name="fax_number" >
+                    <br><br>
+                    <label for="physicalAddress"><b>Physical Address</b></label>
+                    <input type="text" placeholder="Enter Physical Address" name="physicalAddress" >
+                    <br><br>
+                    <label for="description"><b>Description</b></label>
+                    <input type="text" placeholder="Brief company description" name="description" >
+                </div>
+            </div>
+            <br>
+            <center>
+            <div class="btn-group">
+                <button style="width:15%">Submit</button>
+            </div>
+            </center>
+        </form>
+    </div>
+
+    <br><br><br><br>
+    <!-- footer -->
+    <footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+        <p style="margin: 0;">© <span>2023</span> <a href="#">Supplier Info</a> All rights are reserved by the<span style="font-weight: bold;"> IT UNIT</span>.</p>
+    </footer>
+
+<script>
+    // Example function to handle file upload and show the message
+const uploadForm = document.getElementById('uploadForm');
+const statusMessage = document.getElementById('statusMessage'); // Div or span to display the message
+
+uploadForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(uploadForm);
+    
+    try {
+        // Send the POST request to the server
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        // Check if the response is OK
+        if (response.ok) {
+            const data = await response.json(); // Parse the JSON response
+            statusMessage.textContent = data.message;  // Show the message from the response
+            statusMessage.style.color = 'green';  // Optionally style it (e.g., green for success)
+        } else {
+            throw new Error('Failed to upload file');
+        }
+    } catch (error) {
+        statusMessage.textContent = 'Error: ' + error.message; // Show error if the upload fails
+        statusMessage.style.color = 'red';  // Red for errors
+    }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+    <style>
+        table {
+            width: 75%;
+        }
+            .nav-list-item {
+            list-style: none;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            text-decoration: none; /* Remove underline from the link */
+            gap: 10px; /* Add spacing between icon and text */
+        }
+
+        .nav-icon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .nav-text {
+            font-size: 16px; /* Adjust the text size as needed */
+            color: inherit; /* Match text color with the parent link */
+        }
+    </style>
+</head>
+<body>
+
+    {{!-- Navigation links --}}
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">Supplier Info</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/Dashboard" class="nav-link">
+                 <img src="/home.png" alt="Home Icon" class="nav-icon" style="height: 30px; width: 30px;  ">
+                Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">
+                <img src="/logout.png" alt="Home Icon" class="nav-icon" style="height: 35px; width: 35px;  ">
+                Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <p>
+        <a href="http://localhost:8000/Dashboard"><img src="/back.png" style="height: 60px; width: 60px; margin: 20px "></a>
+    </p>
+    {{!-- Dashboard --}}
+<h1 style="text-align: center;">List of all Suppliers</h1>
+<br>
+<br>
+<br>
+<br>
+{{{table}}}
+<br>
+<br>
+<br>
+    {{!-- footer --}}
+    <footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+        <p style="margin: 0;">© <span>2023</span> <a href="#">Supplier Info</a> All rights are reserved by the<span style="font-weight: bold;"> IT UNIT</span>.</p>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+<style>
+    /* Styling for centering and layout */
+    .form-container {
+        display: flex;
+        justify-content: center; /* Centers the form horizontally */
+        align-items: center; /* Centers the form vertically if necessary */
+        width: 100%;
+        margin: 0 auto; /* Centers the form horizontally */
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        width: 65%;
+        margin: auto;
+    }
+
+    .column {
+        flex: 2;
+        padding: 20px;
+    }
+
+    /* Adjust input width */
+    .column input {
+        flex-grow: 1; /* Makes the input field grow to fill available space */
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #000; /* Thick, visible border */
+        box-sizing: border-box;
+        width: calc(100% - 60px); /* Account for button's width (50px) and margin (10px) */
+    }
+
+    /* Fix table styling */
+    table {
+        width: 75%;
+    }
+
+    /* Style for the button */
+    .column button {
+        display: inline-block;
+        width: 50px; 
+        height: 50px;
+        padding: 0;
+        margin-left: 10px;
+        border: none;
+        background: none;
+    }
+                .nav-list-item {
+            list-style: none;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            text-decoration: none; /* Remove underline from the link */
+            gap: 10px; /* Add spacing between icon and text */
+        }
+
+        .nav-icon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .nav-text {
+            font-size: 16px; /* Adjust the text size as needed */
+            color: inherit; /* Match text color with the parent link */
+        }
+</style>
+
+</head>
+<body>
+
+    <!-- Navigation links -->
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">Supplier Info</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/Dashboard" class="nav-link">
+                 <img src="/home.png" alt="Home Icon" class="nav-icon" style="height: 30px; width: 30px;  ">
+                Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">
+                <img src="/logout.png" alt="Home Icon" class="nav-icon" style="height: 35px; width: 35px;  ">
+                Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard -->
+
+    <p>
+        <a href="http://localhost:8000/Dashboard"><img src="/back.png" style="height: 60px; width: 60px; margin: 20px "></a>
+    </p>
+
+    <h1 style="text-align: center;">SEARCH</h1>
+
+    <div class="form-container">
+        {{#if message}}
+            <h4 style="color: #09ccb2;" class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+        <form id="new-entry-form" method="get" action="/SearchQuery">
+            <div class="row">
+                <div class="column" style="width: 900px;">
+                    <label for="companyName"><b>Search</b></label>
+                    <div style="display: flex; align-items: center;">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="search by company name, contacts, description, or anything" 
+                            name="companyName" 
+                            style="flex: 1; margin-right: 10px;"
+                        >
+                        <button type="submit" style="background: none; border: none;">
+                            <img src="./magnifying-glass.png" alt="Search" style="width: 50px; height: 50px;">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+<p style="text-align: center;">Search Results</p>
+<br>
+<br>
+{{{table}}}
+
+    <br>
+    <!-- Footer -->
+    <footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+        <p style="margin: 0;">© <span>2023</span> <a href="#">Supplier Info</a> All rights are reserved by the <span style="font-weight: bold;">IT UNIT</span>.</p>
+    </footer>
+
+    <script>
+    // JavaScript to dynamically set the link's href
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const formAction = document.getElementById('new-entry-form').action;
+        const searchValue = encodeURIComponent(this.value.trim()); // Encode the input to handle special characters
+        const searchLink = document.getElementById('searchLink');
+        
+        // Update the href dynamically
+        searchLink.href = `${formAction}?search=${searchValue}`;
+    });
+    </script>
+
+</body>
+</html>

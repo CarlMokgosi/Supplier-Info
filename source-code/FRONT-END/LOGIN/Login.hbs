@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+</head>
+<style> 
+
+    .nav-list-item {
+    list-style: none;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove underline from the link */
+    gap: 10px; /* Add spacing between icon and text */
+}
+
+.nav-icon {
+    height: 35px;
+    width: 35px;
+}
+
+.nav-text {
+    font-size: 16px; /* Adjust the text size as needed */
+    color: inherit; /* Match text color with the parent link */
+}
+
+</style>
+<body>
+
+    {{!-- Navigation links --}}
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            {{!--<a class="navbar-brand" href="/">Supplier Info</a> --}}
+        </div>
+        <ul class="nav-list">
+                        <li class="nav-list-item">
+                <a href="/Register" class="nav-link" style="height: 35px;">
+                <img src="/registration.png" alt="Home Icon" class="nav-icon" style="height: 35px; width: 35px;  ">
+                Register</a>
+            </li>
+        </ul>
+    </nav>
+
+    {{!-- registration form --}}
+    <form action="/authentication/login" method="POST">
+        <div class="container">
+            <h1 style="text-align: center; color:#0162A7; font-weight:bold">Supplier Info</h1>
+            <br>
+            <hr width="100%" size="2">
+
+            {{#if message }}
+                <h4 style="color: #FF4040;" class="alert alert-danger mt-4">{{message}}</h4>
+            {{/if}}
+
+            <label for="username"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <br/>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter your password" name="password" required>
+
+            <div class="clearfix">
+                <button type="submit" class="btn"> Sign in </button>
+            </div>
+      
+           <p style="text-align: center;">Dont have an account ? <a href="#" style="color:dodgerblue">Sign-up here</a>.</p>
+      
+        </div>
+    </form>
+
+    {{!-- footer --}}
+<footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+    <p style="margin: 0;">© <span>2024</span> <a href="#">Supplier Info</a> All rights are reserved  <span style="font-weight: bold;">VERSION 1</span>.</p>
+</footer>
+
+</body>
+</html>

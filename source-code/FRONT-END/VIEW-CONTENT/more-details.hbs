@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+
+    <style>
+        /* Styling for centering and layout */
+        .form-container {
+            display: flex;
+            justify-content: center; /* Centers the form horizontally */
+            align-items: center; /* Centers the form vertically if necessary */
+            width: 100%;
+            margin: 0 auto; /* Centers the form horizontally */
+        }
+
+        label {
+            display: inline-block; /* Ensure labels take up the specified width */
+            min-width: 250px; /* Adjust this value to make labels wider */
+            margin-bottom: 10px; /* Adds space between labels */
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 65%; /* Adjusted width */
+            margin: auto;
+        }
+
+        .column {
+            flex: 2; /* Controls column width */
+            padding: 20px;
+        }
+            .nav-list-item {
+            list-style: none;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            text-decoration: none; /* Remove underline from the link */
+            gap: 10px; /* Add spacing between icon and text */
+        }
+
+        .nav-icon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .nav-text {
+            font-size: 16px; /* Adjust the text size as needed */
+            color: inherit; /* Match text color with the parent link */
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <!-- Navigation links -->
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">Supplier Info</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/Dashboard" class="nav-link">
+                 <img src="/home.png" alt="Home Icon" class="nav-icon" style="height: 30px; width: 30px;  ">
+                Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">
+                <img src="/logout.png" alt="Home Icon" class="nav-icon" style="height: 30px; width: 30px;  ">
+                Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard -->
+<p>
+    <a href="http://localhost:8000/Dashboard"><img src="/back.png" style="height: 60px; width: 60px; margin: 20px "></a>
+</p>
+    <h1 style="text-align: center;">Company Details </h1>
+    <br><br>
+    <div class="form-container">
+
+        {{#if message }}
+                <h4 style="color: #09ccb2;" class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+        <form id="new-entry-form" method="get" enctype="multipart/form-data"> <!-- Hidden input for supplier ID -->
+            <div class="row">
+                <div class="column">
+                    <label for="companyName"><b>Company Name</b>
+                    <p></p>
+                        <label>{{company_name}}</label>
+                    </label>
+                    <br><br>
+                    <label for="cellphone"><b>Cellphone</b>
+                    <p></p>
+                        <label>{{cellphone}}</label>
+                    </label>
+                    <br><br>
+                    <label for="postalAddress"><b>Postal Address</b>
+                    <p></p>
+                        <label>{{postal_address}}</label>
+                    </label>
+                    <br><br>
+                    <label for="profile"><b>Profile document</b>
+                        <div>
+                            <a href="/Download/{{id}}" style="text-decoration: none; display: inline-block; padding: 10px 20px; background-color: #09ccb2; color: white; text-align: center; border-radius: 5px; width: 60%; text-align: center;">
+                                Download Profile
+                            </a>
+                        </div>
+                        <label>Click the button above to download the profile document</label>
+                    </label>
+                </div>
+                <div class="column">
+                    <label for="telephone"><b>Telephone</b>
+                    <p></p>
+                        <label>{{telephone}}</label>
+                    </label>
+                    <br><br>
+                    <label for="fax_number"><b>Fax</b>
+                    <p></p>
+                        <label>{{fax}}</label>
+                    </label>
+                    <br><br>
+                    <label for="physicalAddress"><b>Physical Address</b>
+                    <p></p>
+                        <label>{{physical_address}}</label>    
+                    </label>
+                    <br><br>
+                    <label for="description"><b>Description</b>
+                    <p></p>
+                        <label>{{description}}</label>
+                    </label>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+    <br>
+    <!-- footer -->
+    <footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+        <p style="margin: 0;">© <span>2024</span> <a href="#">Supplier Info</a> All rights are reserved   <span style="font-weight: bold;">VERSION 1</span>..</p>
+    </footer>
+
+<script>
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/register.css">
+    <link rel="stylesheet" type="text/css" href="/footer.css">
+    <link rel="stylesheet" type="text/css" href="/dashboard.css">
+    <style>
+        table {
+            width: 75%;
+        }
+
+.nav-list-item {
+    list-style: none;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove underline from the link */
+    gap: 10px; /* Add spacing between icon and text */
+}
+
+.nav-icon {
+    height: 35px;
+    width: 35px;
+}
+
+.nav-text {
+    font-size: 16px; /* Adjust the text size as needed */
+    color: inherit; /* Match text color with the parent link */
+}
+    </style>
+</head>
+<body>
+
+    {{!-- Navigation links --}}
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">Supplier Info</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">
+                <img src="/logout.png" alt="Home Icon" class="nav-icon" style="height: 35px; width: 35px;  ">
+                Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    {{!-- Dashboard --}}
+<h1 style="text-align: center;">DASHBOARD</h1>
+<br>
+<br>
+<br>
+<br>
+<center>
+<div class="btn-group">
+    <a href="/New_Entry">
+        <button style="width:10%">New Entry</button></a>
+    <a href="/VIEW-CONTENT">
+        <button style="width:10%">View Content</button></a>
+    <a href="/Search">
+        <button style="width:10%">Search</button></a>
+</div>
+</center>
+<br>
+<br>
+<br>
+<p style="text-align: center;">LAST 3 RECENT UPLOADS</p>
+<br>
+<br>
+{{{table}}}
+<br>
+<br>
+<br>
+    {{!-- footer --}}
+<footer style="margin-top: auto; padding: 10px; text-align: center; background-color: #c1c0c0; position: fixed; left: 0; bottom: 0; width: 100%;">
+    <p style="margin: 0;">© <span>2024</span> <a href="#">Supplier Info</a> All rights are reserved   <span style="font-weight: bold;">VERSION 1</span>.</p>
+</footer>
+
+</body>
+</html>
